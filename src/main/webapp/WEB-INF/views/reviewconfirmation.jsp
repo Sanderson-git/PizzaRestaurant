@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,13 +9,17 @@
 <title>Review Confirmation</title>
 </head>
 <body>
+<style>* {
+ font-size: 120%;
+ font-family: Monospace;
+}</style>
 	<h1>Please confirm your review below ${ name }: </h1>
 	Name: ${ name } <br /><br />
-	Comments: ${ comments } <br /><br />
+	Comments: <c:out value="${ comments }"/> <br /><br />
 	Satisfaction: ${ satisfaction } <br /><br />
 	Stars: ${ stars } <br /><br />
 	
-	<button onclick="myFunction()">Submit</button>
+	<button onclick="myFunction()">Submit</button><br />
 
 	<script>
 	function myFunction() {

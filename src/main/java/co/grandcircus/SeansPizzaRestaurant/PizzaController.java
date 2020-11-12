@@ -1,8 +1,12 @@
 package co.grandcircus.SeansPizzaRestaurant;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -10,7 +14,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PizzaController {
 	
 	@GetMapping("/")
-	public String homepage() {
+	public String homepage(Model model) {
+		List<SpecialtyPizza> specialtyList = new ArrayList();
+		SpecialtyPizza meatLovers = new SpecialtyPizza("Meat Lovers", 12);
+		specialtyList.add(meatLovers);
+		SpecialtyPizza vegLovers = new SpecialtyPizza("Veggie Lovers", 13);
+		specialtyList.add(vegLovers);
+		SpecialtyPizza seanSpecial = new SpecialtyPizza("The Sean Special", 11);
+		specialtyList.add(seanSpecial);
+		model.addAttribute("specPizzas", specialtyList);
+		
 		return "homepage";
 	}
 	
@@ -28,15 +41,23 @@ public class PizzaController {
 		return "reviewconfirmation";
 	}
 	
-	@GetMapping("/specialty")
-	public String specialty(String name, String price, Model model) {
+	@GetMapping("/specialty/{name}&{price}")
+	public String specialty(@PathVariable String name, @PathVariable String price, Model model) {
 		model.addAttribute("name", name);
 		model.addAttribute("price", price);
 		return "specialty";
 	}
 	
 	@GetMapping("/custom")
-	public String custom() {
+	public String custom(Model model) {
+		List<String> toppings = new ArrayList();
+		toppings.add("bacon");
+		toppings.add("ham");
+		toppings.add("peppers");
+		toppings.add("pepperoni");
+		toppings.add("chicken");
+		toppings.add("red onion");
+		model.addAttribute("toppings", toppings);
 		return "custom";
 	}
 	

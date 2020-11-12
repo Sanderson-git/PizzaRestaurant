@@ -7,6 +7,10 @@
 <title>Review Page</title>
 </head>
 <body>
+<style>* {
+ font-size: 120%;
+ font-family: Monospace;
+}</style>
 	<h1>Welcome to my review page!</h1>
 	
 	Please enter your review below. <br /><br /><br />

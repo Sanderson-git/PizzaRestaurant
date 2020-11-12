@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,10 @@
 <title>Custom Pizza Builder!</title>
 </head>
 <body>
+<style>* {
+ font-size: 120%;
+ font-family: Monospace;
+}</style>
 	<h1>Welcome to my custom pizza builder page!</h1>
 	<h2>Please build your pizza below! :D</h2><br />
 	
@@ -25,7 +30,12 @@
 			<option>2</option>
 			<option>3</option>
 			<option>4</option>
-		</select><br />
+		</select><br /><br />
+		<b>Toppings:</b>
+		<ul><c:forEach var="top" items="${toppings}">
+			<li>${top }</li>
+		</c:forEach></ul>
+		
 		<b>NOTE: If you select more toppings than are named, the first named topping in special instructions will have extra applied.<br />I.E. 4 toppings selected and 2 named. Both will have extra applied.</b><br />
 		Special instructions (name toppings here): <input type="text" name="instructions" /><br />
 		
